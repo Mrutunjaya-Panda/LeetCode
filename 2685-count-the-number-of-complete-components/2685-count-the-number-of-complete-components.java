@@ -1,3 +1,4 @@
+//using BFS
 class Solution {
     List<Integer> graph[];
     boolean visited[];
@@ -27,7 +28,8 @@ class Solution {
                 //for new component
                 vertices = 0;
                 degreeSum = 0;
-                dfs(i);//in dfs if same component node it will already be marked visted
+                //dfs(i);//in dfs if same component node it will already be marked visted
+                bfs(i);
                 long actualEdges = degreeSum/2;
                 long requiredEdges = (long)vertices*(vertices-1)/2;
                 if(actualEdges == requiredEdges){
@@ -38,14 +40,32 @@ class Solution {
         return completeComponents;
     }
 
-    public void dfs(int node){
-        visited[node] = true;
-        vertices++;
-        degreeSum += graph[node].size();
+    // public void dfs(int node){
+    //     visited[node] = true;
+    //     vertices++;
+    //     degreeSum += graph[node].size();
 
-        for(int nei : graph[node]){
-            if(!visited[nei]){
-                dfs(nei);
+    //     for(int nei : graph[node]){
+    //         if(!visited[nei]){
+    //             dfs(nei);
+    //         }
+    //     }
+    // }
+
+    public void bfs(int node){
+        visited[node] = true;
+        
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(node);
+        while(!q.isEmpty()){
+            int curr = q.poll();
+            vertices++;
+            degreeSum += graph[curr].size();
+            for(int nei : graph[curr]){
+                if(!visited[nei]){
+                    visited[nei] = true;
+                    q.offer(nei);
+                }
             }
         }
     }
