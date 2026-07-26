@@ -1,16 +1,22 @@
 class Solution {
-    // Essentially, after sorting the array:
+    public int maximumProduct(int[] A) {
+        int a = -1001, b = a, c = b;
+        int x =  1001, y = x;
 
-    // We calculate the product of the three largest positive numbers, and
-    // The product of the two smallest negative numbers and the largest positive number, respectively.
-    // The maximum value between the two is the answer.
-    public int maximumProduct(int[] nums) {
-        int n = nums.length;
-        Arrays.sort(nums);
-        int prodNegPos = nums[0]*nums[1]*nums[n-1];
-        int prodPos = nums[n-3]*nums[n-2]*nums[n-1];
-        return Math.max(prodNegPos, prodPos);
+        for (int n : A) {
+            int pa = a, pb = b, px = x;
+            
+            a = Math.max(a, n);
+            b = Math.max(b, Math.min(pa, n));
+            c = Math.max(c, Math.min(pb, n));
+            
+            x = Math.min(x, n);
+            y = Math.min(y, Math.max(px, n));
+        }
+
+        return Math.max(a * b * c, a * x * y);
     }
 }
-// Time Complexity: O(nlogn)
-// Space Complexity: O(1)−O(logn)
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
