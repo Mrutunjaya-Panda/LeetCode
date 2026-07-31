@@ -13,7 +13,10 @@ class Solution {
         PriorityQueue<Integer> frequencyQueue = new PriorityQueue<>(
             (a, b) -> b - a
         );
-        frequencyQueue.addAll(frequencyMap.values());
+        //frequencyQueue.addAll(frequencyMap.values());
+        for(var i : frequencyMap.entrySet()){
+            frequencyQueue.add(i.getValue());
+        }
 
         int totalPushes = 0;
         int index = 0;
