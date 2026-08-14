@@ -4,6 +4,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Array
 |  |
 | ------- |
+| [0056-merge-intervals](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0056-merge-intervals) |
 | [0486-predict-the-winner](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0486-predict-the-winner) |
 | [0628-maximum-product-of-three-numbers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0628-maximum-product-of-three-numbers) |
 | [0877-stone-game](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0877-stone-game) |
@@ -124,6 +125,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Sorting
 |  |
 | ------- |
+| [0056-merge-intervals](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0056-merge-intervals) |
 | [0628-maximum-product-of-three-numbers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0628-maximum-product-of-three-numbers) |
 | [1464-maximum-product-of-two-elements-in-an-array](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1464-maximum-product-of-two-elements-in-an-array) |
 | [2996-smallest-missing-integer-greater-than-sequential-prefix-sum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/2996-smallest-missing-integer-greater-than-sequential-prefix-sum) |
@@ -211,4 +213,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [2213-longest-substring-of-one-repeating-character](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/2213-longest-substring-of-one-repeating-character) |
+## Quicksort
+|  |
+| ------- |
+| [0056-merge-intervals](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0056-merge-intervals) |
 <!---LeetCode Topics End-->
