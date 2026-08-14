@@ -38,11 +38,13 @@ class Solution {
         int m = list.size();
         // int[][] res = list.toArray(new int[0]);
         //col will be same i. 2
-        int[][] res = new int[m][2];
-        for(int i=0;i<m;i++){
-            res[i] = list.get(i);
-        }
-        return res;
+        // int[][] res = new int[m][2];
+        // for(int i=0;i<m;i++){
+        //     res[i] = list.get(i);
+        // }
+        //return res;
+
+        return list.toArray(new int[m][]);
     }
 }
 
