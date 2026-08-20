@@ -1,33 +1,45 @@
 class Solution {
-
     public int maxNumberOfFamilies(int n, int[][] reservedSeats) {
-        int left = 0b11110000;
-        int middle = 0b11000011;
-        int right = 0b00001111;
+        Map<Integer,Set<Integer>> map = new HashMap<>();//row,{seats resweved in each row}
 
-        Map<Integer, Integer> occupied = new HashMap<Integer, Integer>();
-        for (int[] seat : reservedSeats) {
-            if (seat[1] >= 2 && seat[1] <= 9) {
-                int origin = occupied.containsKey(seat[0])
-                    ? occupied.get(seat[0])
-                    : 0;
-                int value = origin | (1 << (seat[1] - 2));
-                occupied.put(seat[0], value);
-            }
+        for(int[] row : reservedSeats){
+            int r = row[0];
+            int seat = row[1];
+
+            //map.computeIfAbsent(row,k -> new HashSet()).add(seat);
+            //alternatively
+            map.putIfAbsent(r,new HashSet());
+            map.get(r).add(seat);
         }
 
-        int ans = (n - occupied.size()) * 2;
-        for (Map.Entry<Integer, Integer> entry : occupied.entrySet()) {
-            int row = entry.getKey(),
-                bitmask = entry.getValue();
-            if (
-                (bitmask | left) == left ||
-                (bitmask | middle) == middle ||
-                (bitmask | right) == right
-            ) {
-                ++ans;
+        //find empty rows, we can fill empty rows with atMax 2 groups
+        //i.e group A and group C.
+
+        int empty_rows = n - map.size();
+        int result = (empty_rows)*2;
+
+         for(var entry : map.entrySet()){
+            //for the current booked row get the bookedSeats
+            Set<Integer> bookedSeats = entry.getValue();
+
+            //for groupA to be valid or get allocated seats
+            boolean groupA = !bookedSeats.contains(2) && !bookedSeats.contains(3) && !bookedSeats.contains(4) && !bookedSeats.contains(5);
+
+            boolean groupB = !bookedSeats.contains(4) && !bookedSeats.contains(5) && !bookedSeats.contains(6) && !bookedSeats.contains(7);
+
+            boolean groupC = !bookedSeats.contains(6) && !bookedSeats.contains(7) && !bookedSeats.contains(8) && !bookedSeats.contains(9);
+
+            //for the current row
+            if(groupA && groupC){
+                result += 2;
+            }else if(groupA || groupB || groupC){
+                result += 1;
             }
-        }
-        return ans;
+         }
+
+         return result;
     }
 }
+
+//T.C : O(N), N = reservedSeats.length
+//S.C : O(N), for storing reserved seats in map (in form of HashSet)
