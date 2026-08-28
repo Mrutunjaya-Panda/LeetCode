@@ -1,78 +1,92 @@
 class Solution {
-
-    String result = "";
     char midChar = '$';
+    String result = "";
     int half = 0;
 
-    boolean solve(StringBuilder curr, int[] count, String target, int i, boolean greater) {
-        if (i == half) {
-
-            String leftHalf = curr.toString();                       // left half
-            String rightHalf = new StringBuilder(leftHalf)
-                                   .reverse().toString();            // right half
-
+    public boolean solve(StringBuilder curr,int[] halfCnt, String target,int i,boolean greater){
+        if(i == half){
+            //build leftHalf
+            // if(greater){
+            //     res = curr.toString();
+            //     return true;
+            // }
+            //here curr is basically forming leftHalf of the palindrome.
+            String leftHalf = curr.toString();
+            //because in StringBuilder reverse(), it reverses inPlace.
+            String rightHalf = new StringBuilder(leftHalf).reverse().toString();
             String candidate = leftHalf;
-            if (midChar != '$')
-                candidate += midChar;                                // mid character
+            if(midChar != '$'){
+                candidate += midChar;
+            }
             candidate += rightHalf;
-
-            if (candidate.compareTo(target) > 0) {                   // strictly greater
+            if(candidate.compareTo(target) > 0){
+                //strictly greater & palindromic simultaneously
                 result = candidate;
                 return true;
             }
-
             return false;
         }
 
-        for (char ch = 'a'; ch <= 'z'; ch++) {
-            if (count[ch - 'a'] == 0)
+        //check/try every possibility for each index
+        for(char ch='a';ch <= 'z';ch++){
+            if(halfCnt[ch - 'a'] == 0){
                 continue;
+            }
 
-            if (!greater && ch < target.charAt(i))
+            if(!greater && ch < target.charAt(i)){
                 continue;
+            }
 
+            //do
             curr.append(ch);
-            count[ch - 'a']--;
+            halfCnt[ch - 'a']--;
 
-            boolean isGreater = greater || ch > target.charAt(i);
-
-            if (solve(curr, count, target, i + 1, isGreater))
+            //explore
+            boolean isGreater = greater || (ch > target.charAt(i));
+            if(solve(curr,halfCnt,target,i+1,isGreater)){
                 return true;
+            }
 
+            //undo
             curr.deleteCharAt(curr.length() - 1);
-            count[ch - 'a']++;
+            halfCnt[ch - 'a']++;
         }
-
         return false;
     }
-
     public String lexPalindromicPermutation(String s, String target) {
+        
         int n = s.length();
-        int[] count = new int[26];
+        int cnt[] = new int[26];
 
-        for (char ch : s.toCharArray())
-            count[ch - 'a']++;
-
-        int oddCount = 0;
-        for (int c = 0; c < 26; c++) {
-            if (count[c] % 2 == 1) {
-                oddCount++;
-                midChar = (char) (c + 'a');
+        for(int i=0;i<n;i++){
+            cnt[s.charAt(i) - 'a']++;
+        }
+        //cnt no. of chars with odd frequency
+        int oddCnt = 0;
+        
+        for(int i=0;i<26;i++){
+            if(cnt[i]%2 == 1){
+                oddCnt++;
+                midChar = (char)(i+'a');
             }
         }
-        if (oddCount > 1)
-            return "";
 
-        // Left-half counts + middle char (only when n is odd).
-        int[] halfCount = new int[26];
-        for (int c = 0; c < 26; c++) {
-            halfCount[c] = count[c] / 2;
+        if(oddCnt > 1){
+            //palindrome is not possible just return with empty string.
+            return "";
         }
 
-        half = n / 2;
+        //now a palindrome string is possible with permutations.
+        // Left-half counts + middle char (only when n is odd).
 
+        int[] halfCnt = new int[26];
+        for(int i=0;i<26;i++){
+            halfCnt[i] = cnt[i]/2;
+        }
+
+        half = n/2;//till this we need index of target inorder to form palindrome.
         StringBuilder curr = new StringBuilder();
-        solve(curr, halfCount, target, 0, false);
+        solve(curr,halfCnt,target,0,false);
         return result;
     }
 }
