@@ -1,59 +1,29 @@
+//Approach-1 (Recursion + MEmoization)
+//T.C : O(m*n)
+//S.C : O(m*n)
 class Solution {
-    //recursive
-    public int solve(String s, String t,int i,int j){
-        //base
-        if(j == t.length()){
-            //we have found 1 subsequence in j = t.
-            return 1;
-        }
-        if(i == s.length()){
-            //this path didn't lead me to t.
-            return 0;
-        }
-
-        //choices
-        if(s.charAt(i) == t.charAt(j)){
-            return solve(s,t,i+1,j) + solve(s,t,i+1,j+1);
-        }
-        //else
-        //only move s pointer.
-        return solve(s,t,i+1,j);
-    }
-
-    //memoized
-    static int[][] dp;
-    public int solve1(String s, String t,int i,int j){
-        //base
-        if(j == t.length()){
-            //we have found 1 subsequence in j = t.
-            return dp[i][j]= 1;
-        }
-        if(i == s.length()){
-            //this path didn't lead me to t.
-            return dp[i][j] =0;
-        }
-
-        if(dp[i][j] != -1) return dp[i][j];
-        //choices
-        if(s.charAt(i) == t.charAt(j)){
-            return dp[i][j] = solve1(s,t,i+1,j) + solve1(s,t,i+1,j+1);
-        }
-        //else
-        //only move s pointer.
-        return dp[i][j] = solve1(s,t,i+1,j);
-    }
-
-    public int numDistinct(String s, String t) {
+    int[][] dp = new int[1001][1001];
+    int solve(String s, String t, int m, int n) {
+        if(n == 0)
+            return dp[m][n] = 1;
+        if(m == 0)
+            return dp[m][n] = 0;
         
-        if(s.length() < t.length()){
+        if(dp[m][n] != -1)
+            return dp[m][n];
+        
+        if(s.charAt(m-1) == t.charAt(n-1))
+            return dp[m][n] = solve(s, t, m-1, n) + solve(s, t, m-1, n-1);
+        else
+            return dp[m][n] = solve(s, t, m-1, n);
+    }
+    public int numDistinct(String s, String t) {
+        int m = s.length();
+        int n = t.length();
+        if(m < n)
             return 0;
-        }
-        dp = new int[1001][1001];
-        for(int[] row : dp){
-            Arrays.fill(row,-1);
-        }
-        return solve1(s,t,0,0);
+        for(int[] row : dp)
+            Arrays.fill(row, -1);
+        return solve(s, t, m, n);
     }
 }
-
-//T.C:- O(n*m)
