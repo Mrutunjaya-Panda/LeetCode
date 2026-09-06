@@ -1,79 +1,97 @@
+//Approach - BFS with states
+//T.C : O(m⋅n⋅E⋅2^k), number of possible states
+//S.C : O(m⋅n⋅E⋅2^k), number of possible states stored in vector of this size
 class Solution {
+    int[][] directions = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
-    static final int[] dx = { 0, 1, 0, -1 };
-    static final int[] dy = { 1, 0, -1, 0 };
+    static class State {
+        int row;
+        int col;
+        int energyLeft;
+        int collectedMask;
+
+        State(int row, int col, int energyLeft, int collectedMask) {
+            this.row = row;
+            this.col = col;
+            this.energyLeft = energyLeft;
+            this.collectedMask = collectedMask;
+        }
+    }
 
     public int minMoves(String[] classroom, int energy) {
         int m = classroom.length;
         int n = classroom[0].length();
-        int[][] id = new int[m][n];
-        int sx = 0,
-            sy = 0,
-            cnt = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                char c = classroom[i].charAt(j);
-                if (c == 'S') {
-                    sx = i;
-                    sy = j;
-                } else if (c == 'L') {
-                    id[i][j] = 1 << cnt;
-                    cnt++;
+        int maxEnergy = energy;
+
+        int[][] litterBit = new int[20][20]; // which bit position does this litter represent
+        int litterCount = 0;
+        int startRow = 0;
+        int startCol = 0;
+        for (int r = 0; r < m; ++r) {
+            for (int c = 0; c < n; ++c) {
+                litterBit[r][c] = -1;
+                if (classroom[r].charAt(c) == 'S') {
+                    startRow = r;
+                    startCol = c;
+                } else if (classroom[r].charAt(c) == 'L') {
+                    litterBit[r][c] = litterCount;
+                    litterCount++;
                 }
             }
         }
-        int full = 1 << cnt;
-        int[][][] bestEnergy = new int[m][n][full];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                Arrays.fill(bestEnergy[i][j], -1);
-            }
-        }
 
-        bestEnergy[sx][sy][0] = energy;
+        int allCollected = (1 << litterCount) - 1;
+        if (litterCount == 0)
+            return 0;
 
-        class Info {
+        boolean[][][][] seen = new boolean[m][n][maxEnergy + 1][1 << litterCount];
 
-            int x, y, mask, e, steps;
+        Queue<State> que = new LinkedList<>();
+        que.add(new State(startRow, startCol, maxEnergy, 0));
+        seen[startRow][startCol][maxEnergy][0] = true;
 
-            Info(int x, int y, int mask, int e, int steps) {
-                this.x = x;
-                this.y = y;
-                this.mask = mask;
-                this.e = e;
-                this.steps = steps;
-            }
-        }
-        Deque<Info> q = new ArrayDeque<>();
-        q.addLast(new Info(sx, sy, 0, energy, 0));
-        while (!q.isEmpty()) {
-            Info t = q.removeFirst();
-            if (t.mask == full - 1) {
-                return t.steps;
-            }
-            if (t.e == 0) {
-                continue;
-            }
-            for (int d = 0; d < 4; d++) {
-                int nx = t.x + dx[d];
-                int ny = t.y + dy[d];
-                if (
-                    nx < 0 ||
-                    nx >= m ||
-                    ny < 0 ||
-                    ny >= n ||
-                    classroom[nx].charAt(ny) == 'X'
-                ) {
+        int moves = 0;
+
+        while (!que.isEmpty()) {
+            int currSize = que.size();
+
+            while (currSize-- > 0) {
+                State current = que.poll();
+
+                if (current.collectedMask == allCollected)
+                    return moves;
+                if (current.energyLeft == 0)
                     continue;
-                }
-                int ne = classroom[nx].charAt(ny) == 'R' ? energy : t.e - 1;
-                int nmask = t.mask | id[nx][ny];
-                if (ne > bestEnergy[nx][ny][nmask]) {
-                    bestEnergy[nx][ny][nmask] = ne;
-                    q.addLast(new Info(nx, ny, nmask, ne, t.steps + 1));
+
+                for (int[] dir : directions) {
+                    int nextRow = current.row + dir[0];
+                    int nextCol = current.col + dir[1];
+
+                    if (nextRow < 0 || nextRow >= m || nextCol < 0 || nextCol >= n)
+                        continue;
+
+                    char cell = classroom[nextRow].charAt(nextCol);
+                    if (cell == 'X')
+                        continue;
+
+                    int nextEnergy = current.energyLeft - 1;
+                    int nextMask = current.collectedMask;
+
+                    if (cell == 'R') {
+                        nextEnergy = maxEnergy;
+                    } else if (cell == 'L') {
+                        nextMask |= (1 << litterBit[nextRow][nextCol]);
+                    }
+
+                    if (!seen[nextRow][nextCol][nextEnergy][nextMask]) {
+                        seen[nextRow][nextCol][nextEnergy][nextMask] = true;
+                        que.add(new State(nextRow, nextCol, nextEnergy, nextMask));
+                    }
                 }
             }
+            moves++;
         }
+
         return -1;
     }
 }
