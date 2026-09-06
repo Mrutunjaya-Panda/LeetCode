@@ -45,6 +45,9 @@ class Solution {
 
     public int numDistinct(String s, String t) {
         
+        if(s.length() < t.length()){
+            return 0;
+        }
         dp = new int[1001][1001];
         for(int[] row : dp){
             Arrays.fill(row,-1);
@@ -53,4 +56,4 @@ class Solution {
     }
 }
 
-//T.C:- O(2^n), n = s.lenth()
+//T.C:- O(n*m)
