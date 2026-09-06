@@ -26,11 +26,11 @@ class Solution {
         //base
         if(j == t.length()){
             //we have found 1 subsequence in j = t.
-            return 1;
+            return dp[i][j]= 1;
         }
         if(i == s.length()){
             //this path didn't lead me to t.
-            return 0;
+            return dp[i][j] =0;
         }
 
         if(dp[i][j] != -1) return dp[i][j];
