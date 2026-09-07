@@ -10,7 +10,7 @@ class Solution {
         }
         if(dp[n] != -1) return dp[n];
 
-        int total = (2*solve(n-1)%M);
+        int total = (int)(2L*solve(n-1)%M);
         //remove duplicates
         if(prev[n] != 0){
             int duplicates = solve(prev[n] - 1);
