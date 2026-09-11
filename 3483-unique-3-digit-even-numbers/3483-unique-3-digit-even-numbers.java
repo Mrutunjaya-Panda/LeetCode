@@ -1,28 +1,36 @@
 class Solution {
-    //T.C : O(n^3 + SlogS), S = total 3 digits even numbers
-    //S.C : O(S)
-    //Brute force approach
+    //Approach 2, go on forming 3-digits no. through the constarints provided
+    //T.C:- O(1)
+    //S.C:- O(1)
     public int totalNumbers(int[] digits) {
-        int n = digits.length;
-        //take a set to store unduplicate results.
-        HashSet<Integer> set = new HashSet<>();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                for(int k=0;k<n;k++){
-                    if(i == j || i == k || j==k) continue;
-                    //else, form the 3 digit no.
-
-                    int num = (digits[i]*100+digits[j]*10+digits[k]);
-                    if(num >= 100 && num %2==0){
-                        set.add(num);
-                    }
-                }
-            }
+        int[] freq = new int[10];
+        for(int d:digits){
+            freq[d] = freq[d]+1;
         }
 
-        //now sort the result
-        //List<Integer> list = new ArrayList<>(set);
-        //Collections.sort(list);
-        return set.size();
+        List<Integer> result = new ArrayList<>();
+        //now start forming
+        //for 100th place
+        for(int i=1;i<=9;i++){
+            if(freq[i] == 0) continue;
+            freq[i]--;
+            for(int j=0;j<=9;j++){
+                if(freq[j] == 0) continue;
+                freq[j]--;
+                for(int k=0;k<=8;k+=2){
+                    if(freq[k] == 0) continue;
+                    freq[k]--;
+                    int num = i*100+j*10+k;
+                    result.add(num);
+                    //for this no. formation the digits usage is done, so inc. freq.
+                    freq[k]++;
+                }
+                freq[j]++;
+            }
+            freq[i]++;
+        }
+
+        //The result is already sorted, & has no duplicated entries.
+        return result.size();
     }
 }
