@@ -296,4 +296,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [2265-count-nodes-equal-to-average-of-subtree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/2265-count-nodes-equal-to-average-of-subtree) |
+## Database
+|  |
+| ------- |
+| [0176-second-highest-salary](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0176-second-highest-salary) |
 <!---LeetCode Topics End-->
