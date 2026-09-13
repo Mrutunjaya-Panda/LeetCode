@@ -28,8 +28,8 @@ class Solution {
             }
         }
         //reverse/sort the suffix.
-        reverse(nums,idx+1,n-1);
-        //Arrays.sort(nums,idx+1,nums.length);
+        //reverse(nums,idx+1,n-1);
+        Arrays.sort(nums,idx+1,nums.length);
     }
 
     public void reverse(int[] nums,int start,int last){
