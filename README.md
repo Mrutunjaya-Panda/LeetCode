@@ -4,6 +4,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Array
 |  |
 | ------- |
+| [0031-next-permutation](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0031-next-permutation) |
 | [0056-merge-intervals](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0056-merge-intervals) |
 | [0486-predict-the-winner](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0486-predict-the-winner) |
 | [0628-maximum-product-of-three-numbers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0628-maximum-product-of-three-numbers) |
@@ -269,6 +270,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Two Pointers
 |  |
 | ------- |
+| [0031-next-permutation](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0031-next-permutation) |
 | [3302-find-the-lexicographically-smallest-valid-sequence](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3302-find-the-lexicographically-smallest-valid-sequence) |
 | [3734-lexicographically-smallest-palindromic-permutation-greater-than-target](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3734-lexicographically-smallest-palindromic-permutation-greater-than-target) |
 ## Nim Game
