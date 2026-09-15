@@ -44,7 +44,7 @@ class Solution {
     public int maxPalindromes(String s, int k) {
         int n = s.length();
         if(k == 1) return n;
-        dp = new int[n+1][n+1];
+        dp = new int[n][n];
         for(int[] row: dp){
             Arrays.fill(row,-1);
         }
