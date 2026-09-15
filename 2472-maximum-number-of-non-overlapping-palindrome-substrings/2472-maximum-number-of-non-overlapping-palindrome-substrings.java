@@ -43,7 +43,7 @@ class Solution {
     }
     public int maxPalindromes(String s, int k) {
         int n = s.length();
-        if(k == 1) return n;
+        if(k == 1) return n;//because for 1 len every char can be palindrome & since we needed maximum, therefore returned n.
         dp = new int[n][n];
         for(int[] row: dp){
             Arrays.fill(row,-1);
