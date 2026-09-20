@@ -16,6 +16,8 @@ class Solution {
             int[] prevRowSum = new int[n + 1];
 
             //prevRowSum[x] = dp[k-1][x] + dp[k-1][x+1] + ... + dp[k-1][n-1]
+            //finding suffix sum from right to left
+            //so we can get take in constant time.
             for (int x = n - 1; x >= 0; x--) {
                 prevRowSum[x] = (int) ((prevRowSum[x + 1] + dp[k - 1][x]) % MOD);
             }
@@ -34,3 +36,5 @@ class Solution {
         return dp[K][0];
     }
 }
+
+//T.C:- O(k.n)
