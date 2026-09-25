@@ -1,27 +1,32 @@
 class Solution {
+    public boolean checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        //find nearest point in rectangle from the center of the circle.
+        int xi;
+        int yi;
+        if(x1>xCenter){
+            //nearest is x1
+            xi = x1;
+        }else if(x2 < xCenter){
+            xi = x2;
+        }else{
+            //for x1 < xC && x2 > xC
+            xi = xCenter;
+        }
 
-    public boolean checkOverlap(
-        int radius,
-        int xCenter,
-        int yCenter,
-        int x1,
-        int y1,
-        int x2,
-        int y2
-    ) {
-        double dist = 0;
-        if (xCenter < x1 || xCenter > x2) {
-            dist += Math.min(
-                Math.pow(x1 - xCenter, 2),
-                Math.pow(x2 - xCenter, 2)
-            );
+        if(y1>yCenter){
+            //nearest is x1
+            yi = y1;
+        }else if(y2 < yCenter){
+            yi = y2;
+        }else{
+            //for x1 < xC && x2 > xC
+            yi = yCenter;
         }
-        if (yCenter < y1 || yCenter > y2) {
-            dist += Math.min(
-                Math.pow(y1 - yCenter, 2),
-                Math.pow(y2 - yCenter, 2)
-            );
-        }
-        return dist <= radius * radius;
+
+        //find distance of nearest pt. in rectangle from the center ofthe circle.
+        int d = (int)Math.sqrt(Math.abs(xCenter - xi)*Math.abs(xCenter - xi) + 
+        Math.abs(yCenter - yi)*Math.abs(yCenter - yi));
+
+        return d <= radius;
     }
 }
