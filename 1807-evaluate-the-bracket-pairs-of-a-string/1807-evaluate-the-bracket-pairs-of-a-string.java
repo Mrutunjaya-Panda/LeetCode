@@ -8,7 +8,7 @@ class Solution {
             List<String> curr = knowledge.get(i);
             //for(int j=0;j<curr.size();j++){
 
-            mp.put(curr.get(0),curr.get(1));
+            mp.putIfAbsent(curr.get(0),curr.get(1));
             //}
         }
 
@@ -28,7 +28,8 @@ class Solution {
                     result.append("?");
                 }
                 addKey = false;
-                key = new StringBuilder();
+                //key = new StringBuilder();
+                key.setLength(0);
             }else if(addKey){
                 key.append(c);
             }else{
