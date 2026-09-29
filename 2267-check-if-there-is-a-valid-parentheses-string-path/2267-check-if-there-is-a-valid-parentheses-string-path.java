@@ -1,59 +1,54 @@
+//Approach-2 (Bottom Up)
+//T.C : O(m*n*(m+n))
+//S.C : O(m*n*(m+n))
 class Solution {
-    //memoize
-    int[][][] dp;
-    public boolean solve(int i,int j,int openCnt,char[][] grid,int n,int m){
-        if(i >= n || j >= m){
-            //invalid or outofbound path
-            return false;
-        }
+    int m, n;
+    boolean[][][] t;
 
-        if(grid[i][j] == '('){
-            openCnt++;
-        }else{
-            openCnt--;
-        }
-
-        if(openCnt < 0){
-            //impossible to form a valid parenthesis path.
-            return false;
-        }
-
-        if(i == n-1 && j == m-1){
-            //reached to destination cell, but check if it is a valid= parenthes path or not=.
-            return (openCnt == 0) ? true:false;
-        }
-
-        if(dp[i][j][openCnt] != -1) return (dp[i][j][openCnt] == 1)?true : false;
-
-        //paths
-        boolean right = solve(i,j+1,openCnt,grid,n,m);
-        boolean down = solve(i+1,j,openCnt,grid,n,m);
-
-        if(right || down){
-            dp[i][j][openCnt] = 1;
-            return true;
-        }
-
-        //couldn't find any valid path.
-        dp[i][j][openCnt] = 0;
-        return false;
-    }
     public boolean hasValidPath(char[][] grid) {
-        int n = grid.length;
-        int m = grid[0].length;
-        if(grid[0][0] == ')') return false;
+        m = grid.length;
+        n = grid[0].length;
 
-        //also if parenthesis length is odd the also never possible to balance
-        if((m+n-1) %2 != 0) return false;
+        if ((m + n - 1) % 2 == 1)
+            return false;
 
-        dp = new int[101][101][201];//max openCnt can be m+n-1;
-        for(int[][] Twod : dp){
-            for(int[] oned: Twod){
-                Arrays.fill(oned,-1);
+        if (grid[0][0] != '(' || grid[m - 1][n - 1] != ')') {
+            return false;
+        }
+
+        t = new boolean[m][n][201];
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+
+                for (int openCount = 0; openCount <= i+1+j+1-1; openCount++) {
+                    //since i and j are 0 basedindexing.
+                    if (i == m - 1 && j == n - 1) {
+                        t[i][j][openCount] = (openCount == 0);
+                        continue;
+                    }
+
+                    t[i][j][openCount] = false;
+
+                    // move down
+                    if (i + 1 < m) {
+                        int newOpCount = (grid[i + 1][j] == '(') ? openCount + 1 : openCount - 1;
+                        if (newOpCount >= 0 && t[i + 1][j][newOpCount]) {
+                            t[i][j][openCount] = true;
+                        }
+                    }
+
+                    // move right
+                    if (j + 1 < n) {
+                        int newOpCount = (grid[i][j + 1] == '(') ? openCount + 1 : openCount - 1;
+                        if (newOpCount >= 0 && t[i][j + 1][newOpCount]) {
+                            t[i][j][openCount] = true;
+                        }
+                    }
+                }
             }
         }
-        return solve(0,0,0,grid,n,m);
+
+        return t[0][0][1];
     }
 }
-
-//T.C:- O(n*m)
