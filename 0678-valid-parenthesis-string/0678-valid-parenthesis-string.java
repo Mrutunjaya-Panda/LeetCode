@@ -1,53 +1,41 @@
+//Approach-3 (Using two Stacks) - No DP required
+//T.C : O(n)
+//S.C : O(n)
 class Solution {
-    int n;
-    //memoize
-    int[][] dp;
-    public boolean solve(int idx, int open, String s){
-        //base case
-        if(idx == n){
-            return open==0;
-        }
-        boolean isValid = false;
-
-        if(dp[idx][open] != -1) return (dp[idx][open] == 1) ? true : false;
-        if(s.charAt(idx) == '('){
-            isValid |= solve(idx+1,open+1,s);
-        }else if(s.charAt(idx) == '*'){
-            //then we have 3 options.
-            //1. * -> '('
-            isValid |= solve(idx+1,open+1,s);
-            
-            //2. * -> ''
-            isValid |= solve(idx+1,open,s);
-            //3. * -> ')'
-            //safety check
-            //because if -ve it cannot be valid further at any cost i.e impossible.
-            if(open > 0){
-                isValid |= solve(idx+1,open-1,s);
-            }
-        }else{
-            // ')'
-            if(open > 0){
-                isValid |= solve(idx+1,open-1,s);
-            }
-        }
-
-        if(isValid){
-            dp[idx][open] = 1;
-        }else{
-            dp[idx][open] = 0;
-        }
-        
-        return isValid;
-    }
     public boolean checkValidString(String s) {
-        this.n = s.length();
-        dp = new int[101][101];
-        for(int[] row : dp){
-            Arrays.fill(row,-1);
+        Stack<Integer> openSt = new Stack<>();
+        Stack<Integer> asterisksSt = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (ch == '(') {
+                openSt.push(i);
+            } else if (ch == '*') {
+                asterisksSt.push(i);
+            } else {
+                if (!openSt.isEmpty()) {
+                    //close can be in openSt itself
+                    openSt.pop();
+                } else if (!asterisksSt.isEmpty()) {
+                    //else from asterisk
+                    asterisksSt.pop();
+                } else {
+                    //cannot be balanced.
+                    return false;
+                }
+            }
         }
-        return solve(0,0,s);
+
+        // This post processing will be required for cases like - "*(())(*"
+        while (!openSt.isEmpty() && !asterisksSt.isEmpty()) {
+            if (openSt.peek() > asterisksSt.peek()) {
+                return false;
+            }
+            openSt.pop();
+            asterisksSt.pop();
+        }
+
+        return openSt.isEmpty();
     }
 }
-
-//T.C:- O(n)
