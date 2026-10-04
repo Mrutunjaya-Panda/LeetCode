@@ -1,41 +1,44 @@
-//Approach-3 (Using two Stacks) - No DP required
-//T.C : O(n)
-//S.C : O(n)
 class Solution {
+    //Approach 4
+    //T.C:- O(n)
+    //S.C:- O(1)
     public boolean checkValidString(String s) {
-        Stack<Integer> openSt = new Stack<>();
-        Stack<Integer> asterisksSt = new Stack<>();
+        int n=s.length();
 
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-
-            if (ch == '(') {
-                openSt.push(i);
-            } else if (ch == '*') {
-                asterisksSt.push(i);
-            } else {
-                if (!openSt.isEmpty()) {
-                    //close can be in openSt itself
-                    openSt.pop();
-                } else if (!asterisksSt.isEmpty()) {
-                    //else from asterisk
-                    asterisksSt.pop();
-                } else {
-                    //cannot be balanced.
-                    return false;
-                }
+        //left to right traversal
+        //assume * = (
+        int openCnt = 0;
+        for(int i=0;i<n;i++){
+            if(s.charAt(i) == '(' || s.charAt(i) == '*'){
+                openCnt++;
+            }else{
+                openCnt--;
             }
-        }
 
-        // This post processing will be required for cases like - "*(())(*"
-        while (!openSt.isEmpty() && !asterisksSt.isEmpty()) {
-            if (openSt.peek() > asterisksSt.peek()) {
+            //if at any point, close > open or opencnt < 0
+            if(openCnt < 0){
                 return false;
             }
-            openSt.pop();
-            asterisksSt.pop();
         }
 
-        return openSt.isEmpty();
+        //right to left traversal
+        //assume * = )
+
+        int closeCnt = 0;
+        for(int i=n-1;i>=0;i--){
+            if(s.charAt(i) == ')' || s.charAt(i) == '*'){
+                closeCnt++;
+            }else{
+                closeCnt--;
+            }
+
+            //if at any point, close > open or opencnt < 0
+            if(closeCnt < 0){
+                return false;
+            }
+        }
+
+        //else both are +ve
+        return true;
     }
 }
