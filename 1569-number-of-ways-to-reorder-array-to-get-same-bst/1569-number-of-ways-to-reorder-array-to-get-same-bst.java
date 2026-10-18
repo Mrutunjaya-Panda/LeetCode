@@ -95,7 +95,7 @@ class Solution {
         long ans = solve(numsList);
         //System.out.println("solve result = " + ans);
         //return (int)solve(numsList)-1;//because original array would have been counted twice.
-        return (int) ((ans - 1 + MOD) % MOD);
+        return (int) ((ans - 1 ) % MOD);
     }
 }
 //T.C:- O(n^2) Recursive BST processing: \(O(n^2)\) worst case, because each recursive call partitions its current list.
