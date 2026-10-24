@@ -19,15 +19,15 @@ class Solution {
             //mnth[i] = mnth[i]+mnth[i-1];
         }
         // Find the later arrival date (start of the overlap)
-        int min = Math.max(nthDay(arriveAlice), nthDay(arriveBob));
+        int start = Math.max(nthDay(arriveAlice), nthDay(arriveBob));
 
         // Find the earlier departure date (end of the overlap)
-        int max = Math.min(nthDay(leaveAlice), nthDay(leaveBob));
+        int end = Math.min(nthDay(leaveAlice), nthDay(leaveBob));
 
         // No overlap if the start date is after the end date
-        if (min > max) return 0;
+        if (start > end) return 0;
 
         // +1 because both arrival and departure dates are inclusive
-        return max - min + 1;
+        return end - start + 1;
     }
 }
