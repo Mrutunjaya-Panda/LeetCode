@@ -31,12 +31,15 @@ class Solution {
                 }
 
                 //now take OR of both to avoid redundant calculations.
-                BitSet combined = new BitSet(1024);
-                for(int x=0;x<1024;x++){
-                    if(up.get(x) || left.get(x)){
-                        combined.set(x);
-                    }
-                }
+                // BitSet combined = new BitSet(1024);
+                // for(int x=0;x<1024;x++){
+                //     if(up.get(x) || left.get(x)){
+                //         combined.set(x);
+                //     }
+                // }
+                //another way.
+                BitSet combined = (BitSet) up.clone();
+                combined.or(left);
 
                 //now xoring each combined set cell with grid[i][j] to find BitSet of grid[i][j].
                 for(int xorV=0;xorV<1024;xorV++){
@@ -46,8 +49,6 @@ class Solution {
                         dp[i][j].set(resXorV);
                     }
                 }
-
-                
             }
         }
         //now again traverse with (m-1,n-1)'s bitmask and return the lowest xor val i.e set to 1.
