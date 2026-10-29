@@ -48,6 +48,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3702-longest-subsequence-with-non-zero-bitwise-xor](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3702-longest-subsequence-with-non-zero-bitwise-xor) |
 | [3718-smallest-missing-multiple-of-k](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3718-smallest-missing-multiple-of-k) |
 | [3731-find-missing-elements](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3731-find-missing-elements) |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 | [3875-construct-uniform-parity-array-i](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3875-construct-uniform-parity-array-i) |
 | [3876-construct-uniform-parity-array-ii](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3876-construct-uniform-parity-array-ii) |
 | [3882-minimum-xor-path-in-a-grid](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3882-minimum-xor-path-in-a-grid/) | Medium |
@@ -182,6 +183,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3517-smallest-palindromic-rearrangement-i) |
 | [3720-lexicographically-smallest-permutation-greater-than-target](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3720-lexicographically-smallest-permutation-greater-than-target) |
 | [3734-lexicographically-smallest-palindromic-permutation-greater-than-target](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3734-lexicographically-smallest-palindromic-permutation-greater-than-target) |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 | [3863-minimum-operations-to-sort-a-string](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3863-minimum-operations-to-sort-a-string/) | Medium |
 ## Stack
 | Problem Name | Difficulty |
@@ -247,6 +249,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [2913-subarrays-distinct-element-sum-of-squares-i](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/2913-subarrays-distinct-element-sum-of-squares-i/) | Easy |
 | [2916-subarrays-distinct-element-sum-of-squares-ii](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/2916-subarrays-distinct-element-sum-of-squares-ii/) | Hard |
 | [3501-maximize-active-section-with-trade-ii](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3501-maximize-active-section-with-trade-ii) |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 ## Bit Manipulation
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -256,6 +259,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3568-minimum-moves-to-clean-the-classroom](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3568-minimum-moves-to-clean-the-classroom) |
 | [3644-maximum-k-to-sort-a-permutation](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3644-maximum-k-to-sort-a-permutation/) | Medium |
 | [3702-longest-subsequence-with-non-zero-bitwise-xor](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3702-longest-subsequence-with-non-zero-bitwise-xor) |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 | [3882-minimum-xor-path-in-a-grid](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3882-minimum-xor-path-in-a-grid/) | Medium |
 ## Sorting
 | Problem Name | Difficulty |
@@ -344,6 +348,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [2265-count-nodes-equal-to-average-of-subtree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/2265-count-nodes-equal-to-average-of-subtree) |
 | [3310-remove-methods-from-project](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/3310-remove-methods-from-project) |
 | [3619-count-islands-with-total-value-divisible-by-k](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3619-count-islands-with-total-value-divisible-by-k/) | Medium |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 ## Breadth-First Search
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -398,6 +403,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- | ------- |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/1569-number-of-ways-to-reorder-array-to-get-same-bst/) | Hard |
 | [2265-count-nodes-equal-to-average-of-subtree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/2265-count-nodes-equal-to-average-of-subtree) |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 ## Binary Tree
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -430,10 +436,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- | ------- |
 | [2913-subarrays-distinct-element-sum-of-squares-i](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/2913-subarrays-distinct-element-sum-of-squares-i/) | Easy |
 | [2916-subarrays-distinct-element-sum-of-squares-ii](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/2916-subarrays-distinct-element-sum-of-squares-ii/) | Hard |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 ## Divide and Conquer
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/1569-number-of-ways-to-reorder-array-to-get-same-bst/) | Hard |
+| [3841-palindromic-path-queries-in-a-tree](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3841-palindromic-path-queries-in-a-tree/) | Hard |
 ## Union-Find
 | Problem Name | Difficulty |
 | ------- | ------- |
