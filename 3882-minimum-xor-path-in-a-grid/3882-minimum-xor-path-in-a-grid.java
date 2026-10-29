@@ -39,7 +39,7 @@ class Solution {
                 // }
                 //another way.
                 BitSet combined = (BitSet) up.clone();
-                combined.or(left);
+                combined.or(left);//or() modifies the object on which you call it.
 
                 //now xoring each combined set cell with grid[i][j] to find BitSet of grid[i][j].
                 for(int xorV=0;xorV<1024;xorV++){
