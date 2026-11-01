@@ -6,6 +6,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- | ------- |
 | [0031-next-permutation](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0031-next-permutation) |
 | [0056-merge-intervals](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0056-merge-intervals) |
+| [0453-minimum-moves-to-equal-array-elements](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0453-minimum-moves-to-equal-array-elements/) | Medium |
 | [0486-predict-the-winner](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0486-predict-the-winner) |
 | [0628-maximum-product-of-three-numbers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0628-maximum-product-of-three-numbers) |
 | [0835-image-overlap](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0835-image-overlap) |
@@ -83,6 +84,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0453-minimum-moves-to-equal-array-elements](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0453-minimum-moves-to-equal-array-elements/) | Medium |
 | [0486-predict-the-winner](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0486-predict-the-winner) |
 | [0628-maximum-product-of-three-numbers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0628-maximum-product-of-three-numbers) |
 | [0836-rectangle-overlap](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0836-rectangle-overlap) |
