@@ -1,91 +1,118 @@
 class Solution {
+    //Approach (Sliding Window)
+    //T.C : O(n log x + n * k)
+    //S.C : O(n*k)
+    int n,x,k;
 
-    private static class MultiSet {
+    long[] minOpsSubarray;
+    // minOpsSubarray[i] = min operations required to make all elements of subarray[i...i+x-1] equal
+    static final long INF = (long) 1e16; // 10^16
 
-        TreeMap<Integer, Integer> counts = new TreeMap<>();
-        int size = 0;
-        long sum = 0;
-
-        void add(int value) {
-            counts.put(value, counts.getOrDefault(value, 0) + 1);
-            ++size;
-            sum += value;
+    long[][] memo;
+    public long solve(int cnt, int i){
+        //Base Case.
+        if(cnt == k){
+            return 0;//minimum k subarrays done.
         }
 
-        void remove(int value) {
-            int count = counts.get(value);
-            if (count == 1) {
-                counts.remove(value);
-            } else {
-                counts.put(value, count - 1);
-            }
-            --size;
-            sum -= value;
+        //the no. of subarrays required.
+        int subarraysNeeded = k - cnt;
+        int elementsNeeded = (x*subarraysNeeded);
+        int lastIdx = i+elementsNeeded-1;
+        if (lastIdx >= n) {
+            return INF;
         }
 
-        int min() {
-            return counts.firstKey();
+        if(memo[cnt][i] != -1){
+            return memo[cnt][i];
         }
+        // Took ith index as start of a subarray
+        long res = minOpsSubarray[i] + solve(cnt+1,i+x);
 
-        int max() {
-            return counts.lastKey();
-        }
+        // Skip index i
+        res = Math.min(res, solve(cnt, i + 1));
+
+        return memo[cnt][i] = res;
     }
 
-    private long[] getCosts(int[] nums, int x) {
-        int n = nums.length;
-        long[] ops = new long[n];
-        MultiSet left = new MultiSet();
-        MultiSet right = new MultiSet();
+    // ---- multiset helpers (TreeMap<value, frequency>) ----
+    private void add(TreeMap<Integer, Integer> map, int val) {
+        map.put(val, map.getOrDefault(val, 0) + 1);
+    }
 
-        for (int i = 0; i < n; ++i) {
-            int value = nums[i];
-            if (left.size == 0 || value <= left.max()) {
-                left.add(value);
-            } else {
-                right.add(value);
-            }
-            if (i >= x) {
-                value = nums[i - x];
-                if (left.counts.containsKey(value)) {
-                    left.remove(value);
-                } else {
-                    right.remove(value);
-                }
-            }
-            if (left.size > right.size + 1) {
-                value = left.max();
-                left.remove(value);
-                right.add(value);
-            } else if (left.size < right.size) {
-                value = right.min();
-                right.remove(value);
-                left.add(value);
-            }
-            if (i >= x - 1) {
-                long mid = left.max();
-                ops[i] =
-                    mid * left.size - left.sum + right.sum - mid * right.size;
-            }
-        }
-        return ops;
+    private void remove(TreeMap<Integer, Integer> map, int val) {
+        int freq = map.get(val);
+        if (freq == 1) map.remove(val);
+        else map.put(val, freq - 1);
     }
 
     public long minOperations(int[] nums, int x, int k) {
-        int n = nums.length;
-        long[] ops = getCosts(nums, x);
-        long[] pre = new long[n + 1];
-        long[] cur = new long[n + 1];
+        this.n = nums.length;
+        this.x = x;
+        this.k = k;
 
-        for (int j = 1; j <= k; ++j) {
-            Arrays.fill(cur, Long.MAX_VALUE);
-            for (int i = j * x; i <= n; ++i) {
-                cur[i] = Math.min(cur[i - 1], pre[i - x] + ops[i - 1]);
+        minOpsSubarray = new long[n + 1];
+        memo = new long[k + 1][n + 1];
+        for (long[] row : memo) Arrays.fill(row, -1);
+
+        //TreeMap is like ordered map/sorted map.
+        TreeMap<Integer, Integer> left = new TreeMap<>();
+        TreeMap<Integer, Integer> right = new TreeMap<>();
+        int leftSize = 0, rightSize = 0;          // TreeMap.size() counts distinct keys, so track sizes manually
+        long leftSum = 0, rightSum = 0;
+
+        int i = 0;
+        int j = 0;
+
+        while(j<n){
+            if(leftSize <= rightSize){
+                //add in the left subarray with val = nums[j]
+                add(left,nums[j]);
+                leftSize++;
+                leftSum += nums[j];
+            }else{
+                add(right, nums[j]);
+                rightSize++;
+                rightSum += nums[j];
             }
-            long[] temp = pre;
-            pre = cur;
-            cur = temp;
+
+            // Balancing:- i.e if positioning of elems are still not sorted/ordered.
+            if (leftSize > 0 && rightSize > 0) {
+                int maxLeft  = left.lastKey();
+                int minRight = right.firstKey();
+
+                if (maxLeft > minRight) {
+                    remove(left, maxLeft);
+                    remove(right, minRight);
+
+                    add(left, minRight);
+                    add(right, maxLeft);
+
+                    leftSum  += minRight - maxLeft;
+                    rightSum += maxLeft - minRight;
+                }
+            }
+
+            // If we have found the subarray of size x
+            if(j-i+1 == x){
+                int median = left.lastKey();
+
+                // minOpsSubarray[i] = (left.size()*median - leftSum) + (rightSum - right.size()*median);//will fail give error.
+                minOpsSubarray[i] = (leftSize*median - leftSum) + (rightSum - rightSize*median);
+
+                if(left.containsKey(nums[i])){
+                    remove(left,nums[i]);
+                    leftSize--;
+                    leftSum = leftSum - nums[i];
+                }else {
+                    remove(right, nums[i]);
+                    rightSize--;
+                    rightSum -= nums[i];
+                }
+                i++;
+            }
+            j++;
         }
-        return pre[n];
+        return solve(0, 0); // recursion
     }
 }
