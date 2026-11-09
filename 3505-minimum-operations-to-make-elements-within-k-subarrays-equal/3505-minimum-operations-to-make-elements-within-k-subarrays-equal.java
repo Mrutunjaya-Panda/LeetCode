@@ -52,7 +52,7 @@ class Solution {
         this.k = k;
 
         minOpsSubarray = new long[n];
-        memo = new long[k + 1][n + 1];
+        memo = new long[k + 1][n];
         for (long[] row : memo) Arrays.fill(row, -1);
 
         //TreeMap is like ordered map/sorted map.
