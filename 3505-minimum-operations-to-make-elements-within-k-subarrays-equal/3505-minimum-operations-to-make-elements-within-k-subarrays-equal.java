@@ -51,7 +51,7 @@ class Solution {
         this.x = x;
         this.k = k;
 
-        minOpsSubarray = new long[n + 1];
+        minOpsSubarray = new long[n];
         memo = new long[k + 1][n + 1];
         for (long[] row : memo) Arrays.fill(row, -1);
 
@@ -64,6 +64,7 @@ class Solution {
         int i = 0;
         int j = 0;
 
+        //first preprocessing, to get the equal subarray formation ops of size x.
         while(j<n){
             if(leftSize <= rightSize){
                 //add in the left subarray with val = nums[j]
