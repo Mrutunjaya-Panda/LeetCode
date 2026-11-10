@@ -4,7 +4,14 @@ class Solution {
         for(int p: piles){
             //finding ceiling hour
             //tot_hours += (p+k-1)/k;
-            tot_hours += Math.ceil((double)p/k);
+            //OR
+            //tot_hours += Math.ceil((double)p/k);
+            //OR
+            if(p%k ==0){
+                tot_hours += p/k;
+            }else{
+                tot_hours += p/k+1;
+            }
         }
         return tot_hours <= h;
     }
