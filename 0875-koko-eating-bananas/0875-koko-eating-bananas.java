@@ -3,7 +3,8 @@ class Solution {
         long tot_hours = 0;
         for(int p: piles){
             //finding ceiling hour
-            tot_hours += (p+k-1)/k;
+            //tot_hours += (p+k-1)/k;
+            tot_hours += Math.ceil((double)p/k);
         }
         return tot_hours <= h;
     }
@@ -32,4 +33,4 @@ class Solution {
     }
 }
 
-//T.C:-O(log(maxi))
+//T.C:-O(N.log(maxi))
