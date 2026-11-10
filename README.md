@@ -11,6 +11,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0486-predict-the-winner](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0486-predict-the-winner) |
 | [0628-maximum-product-of-three-numbers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0628-maximum-product-of-three-numbers) |
 | [0835-image-overlap](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0835-image-overlap) |
+| [0875-koko-eating-bananas](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0875-koko-eating-bananas/) | Medium |
 | [0877-stone-game](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0877-stone-game) |
 | [1140-stone-game-ii](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1140-stone-game-ii) |
 | [1254-number-of-closed-islands](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/1254-number-of-closed-islands/) | Medium |
@@ -132,6 +133,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0875-koko-eating-bananas](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0875-koko-eating-bananas/) | Medium |
 | [1385-find-the-distance-value-between-two-arrays](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/1385-find-the-distance-value-between-two-arrays/) | Easy |
 | [1477-find-two-non-overlapping-sub-arrays-each-with-target-sum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1477-find-two-non-overlapping-sub-arrays-each-with-target-sum) |
 | [1658-minimum-operations-to-reduce-x-to-zero](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1658-minimum-operations-to-reduce-x-to-zero) |
