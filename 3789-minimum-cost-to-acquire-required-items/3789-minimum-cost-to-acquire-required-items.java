@@ -18,9 +18,9 @@ class Solution {
             need2 -= (int)cntBoth;
             //for next remainining.
             if(need1 > 0){
-                tot += (long)need1*(long)Math.min(costBoth,cost1);
+                tot += (long)need1*Math.min(costBoth,cost1);
             }else{
-                tot += (long)need2*(long)Math.min(costBoth,cost2);
+                tot += (long)need2*Math.min(costBoth,cost2);
             }
         // }
         return tot;
