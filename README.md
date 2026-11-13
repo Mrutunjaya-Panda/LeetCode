@@ -6,6 +6,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- | ------- |
 | [0031-next-permutation](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0031-next-permutation) |
 | [0056-merge-intervals](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0056-merge-intervals) |
+| [0239-sliding-window-maximum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0239-sliding-window-maximum/) | Hard |
 | [0453-minimum-moves-to-equal-array-elements](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0453-minimum-moves-to-equal-array-elements/) | Medium |
 | [0462-minimum-moves-to-equal-array-elements-ii](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0462-minimum-moves-to-equal-array-elements-ii/) | Medium |
 | [0486-predict-the-winner](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/0486-predict-the-winner) |
@@ -312,6 +313,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0239-sliding-window-maximum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0239-sliding-window-maximum/) | Hard |
 | [1464-maximum-product-of-two-elements-in-an-array](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1464-maximum-product-of-two-elements-in-an-array) |
 | [1606-find-servers-that-handled-most-number-of-requests](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/1606-find-servers-that-handled-most-number-of-requests/) | Hard |
 | [1882-process-tasks-using-servers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/1882-process-tasks-using-servers/) | Medium |
@@ -428,6 +430,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Sliding Window
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0239-sliding-window-maximum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0239-sliding-window-maximum/) | Hard |
 | [1477-find-two-non-overlapping-sub-arrays-each-with-target-sum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1477-find-two-non-overlapping-sub-arrays-each-with-target-sum) |
 | [1658-minimum-operations-to-reduce-x-to-zero](https://github.com/Mrutunjaya-Panda/LeetCode/tree/master/1658-minimum-operations-to-reduce-x-to-zero) |
 | [2747-count-zero-request-servers](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/2747-count-zero-request-servers/) | Medium |
@@ -521,4 +524,16 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3970-shortest-path-with-at-most-k-consecutive-identical-characters](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/3970-shortest-path-with-at-most-k-consecutive-identical-characters/) | Medium |
+## Queue
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0239-sliding-window-maximum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0239-sliding-window-maximum/) | Hard |
+## Monotonic Queue
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0239-sliding-window-maximum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0239-sliding-window-maximum/) | Hard |
+## Range Minimum/Maximum Query
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0239-sliding-window-maximum](https://github.com/Mrutunjaya-Panda/LeetCode/tree/main/0239-sliding-window-maximum/) | Hard |
 <!---LeetCode Topics End-->
