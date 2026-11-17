@@ -43,6 +43,10 @@ class Solution {
             return Integer.MAX_VALUE;//invalid partitioning.
         }
 
+        // early return
+        if (s + 2 * k > n)
+            return Integer.MAX_VALUE;
+
         if(memo[s][k] != -1) return memo[s][k];
 
         int result = Integer.MAX_VALUE;
