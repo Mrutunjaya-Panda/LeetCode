@@ -1,10 +1,15 @@
 class Solution {
     int n;
     String str;
+    int[][] costMemo;
     public int getCost(int s,int e){
         //find the len, of this current substring.
         int len = e-s+1;
         int minChange = Integer.MAX_VALUE;
+
+        if (costMemo[s][e] != -1) {
+            return costMemo[s][e];
+        }
 
         for(int d=1;d<len;d++){
             if(len%d != 0){
@@ -30,7 +35,7 @@ class Solution {
             }
             minChange = Math.min(minChange,cost);
         }
-        return minChange;
+        return costMemo[s][e] = minChange;
     }
 
     //memoize
@@ -66,6 +71,12 @@ class Solution {
     public int minimumChanges(String s, int k) {
         this.n = s.length();
         this.str = s;
+        costMemo = new int[n + 1][n + 1];
+
+        for (int[] row : costMemo){
+            Arrays.fill(row, -1);
+        }
+
         memo = new int[n+1][k+1];
         for(int[] d:memo){
             Arrays.fill(d,-1);
