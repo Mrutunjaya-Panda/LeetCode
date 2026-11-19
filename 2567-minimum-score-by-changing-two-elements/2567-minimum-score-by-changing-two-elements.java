@@ -9,10 +9,10 @@ class Solution {
         //case 1: change max elem and min elem to thier adjacents. // ek bada + ek chhota hatao
         mini = Math.min(mini, nums[n-2]-nums[1]);
 
-        //case 2: change last 2 max elems to the elem at the mid.
+        //case 2: change last 2 max elems to the elem at the mid. // do sabse bade hatao
         mini = Math.min(mini, nums[n-3]-nums[0]);
 
-        //case 3: change first 2 elems to the mid.
+        //case 3: change first 2 elems to the mid.// do sabse chhote hatao
         mini = Math.min(mini, nums[n-1]-nums[2]);
 
         return mini;
