@@ -1,49 +1,27 @@
-//Approach-2 (Follow up optimal in O(1))
-//T.C : O(1) for both methods
+//Approach-1 (Brute Force)
+//T.C : add() - O(1), getProduct() - O(k)
 //S.C : O(n) for the stream
 class ProductOfNumbers {
-    private List<Integer> cumulativeStream;
+    private List<Integer> nums;
     private int n;
+    
     public ProductOfNumbers() {
-        cumulativeStream = new ArrayList<>();
-        n=0;//Initially the size of the stream is 0.
+        nums = new ArrayList<>();
+        n = 0;
     }
     
     public void add(int num) {
-        //while adding cumuLative product to the stream chech if 0 encountered.
-        if(num == 0){
-            //make empty stream
-            cumulativeStream.clear();
-            n = 0;
-        }else{
-            if(cumulativeStream.isEmpty()){
-                cumulativeStream.add(num);
-            }else{
-                cumulativeStream.add(cumulativeStream.get(n-1)*num);
-            }
-            n++;
-        }
-        
+        nums.add(num);
     }
     
     public int getProduct(int k) {
-        if(k > n){
-            //we encountered zero
-            return 0;
+        int prod = 1;
+        int n = nums.size();
+        
+        for(int i = n - k; i < n; i++) {
+            prod *= nums.get(i);
         }
-
-        if(k == n){
-            return cumulativeStream.get(n-1);
-        }
-
-        //else
-        return cumulativeStream.get(n-1)/cumulativeStream.get(n-k-1);
+        
+        return prod;
     }
 }
-
-/**
- * Your ProductOfNumbers object will be instantiated and called as such:
- * ProductOfNumbers obj = new ProductOfNumbers();
- * obj.add(num);
- * int param_2 = obj.getProduct(k);
- */
