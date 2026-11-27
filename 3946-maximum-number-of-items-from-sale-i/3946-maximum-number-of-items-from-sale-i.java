@@ -1,4 +1,7 @@
 class Solution {
+    //Approach-1 (Recursion Memo)
+    //T.C : O(n^2 + n*budget)
+    //S.C : O(n + n*budget)
     int cheapestPrice;
     int[][] dp;
     public int solve(int n,int[][] items, int budget,int[] copies){
@@ -48,7 +51,7 @@ class Solution {
             copies[i] = copy;
         }
 
-        dp = new int[n+1][budget+1];
+        dp = new int[n][budget+1];
 
         for(int[] row:dp){
             Arrays.fill(row,-1);
